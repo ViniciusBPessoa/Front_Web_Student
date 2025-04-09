@@ -1,21 +1,34 @@
-header{
+header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
     height: 60px;
     background-color: rgb(9, 3, 12);
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.logo{
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
     text-decoration: none;
     font-size: 30px;
     cursor: pointer;
     color: white;
     font-weight: bold;
+    margin-right: 20px;
 }
 
-.favoritos{
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.favoritos {
     text-decoration: none;
     cursor: pointer;
     background-color: white;
@@ -23,12 +36,5 @@ header{
     color: black;
     border-radius: 4px;
     font-weight: bold;
-
     transition: all 0.3s;
-}
-
-.favoritos:active {
-    background-color: black;
-    color: white;
-    transform: scale(0.98); /* Opcional: pequeno efeito de "apertar" */
 }
