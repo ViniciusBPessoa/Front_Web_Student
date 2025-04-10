@@ -1,5 +1,6 @@
 import { useEffect, useState} from 'react';
 import api from '../../services/api';
+import './home.css';
 
 import Post from '../../components/Post';
 
@@ -7,7 +8,7 @@ import Post from '../../components/Post';
 
 
 function Home(){
-  // const [filmes, setFilmes] = useState([]);
+  const [filmes, setFilmes] = useState([]);
 
   useEffect(()=>{
 
@@ -19,6 +20,9 @@ function Home(){
          page: 1,
         }
       })
+
+      setFilmes(response.data.results)
+
     }
 
     loadFilmes();
@@ -26,8 +30,14 @@ function Home(){
   })
 
   return(
-    <div>
-      <h1>BEM VINDO A HOME</h1>
+    <div className="container">
+      <div className="listaFilmes">
+        {filmes.map((filme) => {
+          return(
+            <Post nome = {filme.title} imagem = {filme.poster_path} id = {filme.id}/>
+          )
+        })}
+      </div>
     </div>
   )
 }
