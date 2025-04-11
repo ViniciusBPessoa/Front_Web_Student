@@ -1,0 +1,21 @@
+.divGeral{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.texto{
+    color: #000000;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 0px;
+}
+
+.error{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

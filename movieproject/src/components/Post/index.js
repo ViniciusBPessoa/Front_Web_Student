@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./post.css";
 
 function Post(props){
     return(

@@ -21,7 +21,7 @@ function Home(){
         }
       })
 
-      setFilmes(response.data.results)
+      setFilmes(response.data.results);
 
     }
 
@@ -34,7 +34,8 @@ function Home(){
       <div className="listaFilmes">
         {filmes.map((filme) => {
           return(
-            <Post nome = {filme.title} imagem = {filme.poster_path} id = {filme.id}/>
+
+            <Post nome = {filme.title} imagem = {filme.backdrop_path} id = {filme.id}/>
           )
         })}
       </div>

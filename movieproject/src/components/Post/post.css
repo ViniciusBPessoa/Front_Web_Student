@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Garante que o container ocupe a largura total disponível */
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.nome {
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 15px; /* Espaçamento abaixo do título */
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px; /* Largura fixa igual à da imagem e do link */
+    border-radius: 10px; /* Arredonda todas as bordas do container */
+    overflow: hidden; /* Garante que a imagem respeite o border-radius */
+}
+
+.imagem {
+    width: 100%; /* Ocupa 100% da largura do .post (600px) */
+    max-height: 300px; /* Altura máxima */
+    object-fit: cover; /* Corta a imagem para preencher o espaço sem distorcer */
+    border-radius: 10px 10px 0 0; /* Arredonda apenas o topo */
+}
+
+.link {
+    width: 100%; /* Ocupa 100% da largura do .post (600px) */
+    text-decoration: none;
+    color: white;
+    background-color: rgb(23, 62, 170);
+    padding: 10px 20px;
+    border-radius: 0 0 10px 10px; /* Arredonda apenas a base */
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+}
