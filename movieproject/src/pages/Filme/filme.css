@@ -78,6 +78,8 @@
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s;
+    display: inline-block; /* ou display: block; dependendo do layout */
+    text-align: center;
 }
 
 .trailer-button:hover {

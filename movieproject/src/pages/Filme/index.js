@@ -7,6 +7,7 @@ function Filme() {
     const { id } = useParams();
     const [filme, setFilme] = useState({});
     const [loading, setLoading] = useState(true);
+    const [isSaved, setIsSaved] = useState(false);
 
     useEffect(() => {
         async function loadFilme() {
@@ -19,6 +20,11 @@ function Filme() {
                 });
                 setFilme(response.data);
                 setLoading(false);
+                
+                // Verificar se o filme já está salvo
+                const savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
+                const isMovieSaved = savedMovies.some(movie => movie.id === response.data.id);
+                setIsSaved(isMovieSaved);
             } catch (error) {
                 console.log("Erro ao carregar filme: ", error);
                 setLoading(false);
@@ -27,6 +33,35 @@ function Filme() {
 
         loadFilme();
     }, [id]);
+
+    const toggleSaveMovie = () => {
+        const savedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
+        
+        if (isSaved) {
+            // Remover o filme
+            const updatedMovies = savedMovies.filter(movie => movie.id !== filme.id);
+            localStorage.setItem('savedMovies', JSON.stringify(updatedMovies));
+            setIsSaved(false);
+            alert('Filme removido da sua lista!');
+        } else {
+            // Adicionar o filme
+            const movieToSave = {
+                id: filme.id,
+                title: filme.title,
+                poster_path: filme.poster_path,
+                backdrop_path: filme.backdrop_path,
+                overview: filme.overview,
+                release_date: filme.release_date,
+                vote_average: filme.vote_average,
+                genres: filme.genres?.map(genre => genre.name) || []
+            };
+            
+            const updatedMovies = [...savedMovies, movieToSave];
+            localStorage.setItem('savedMovies', JSON.stringify(updatedMovies));
+            setIsSaved(true);
+            alert('Filme salvo com sucesso!');
+        }
+    };
 
     if (loading) {
         return (
@@ -88,8 +123,11 @@ function Filme() {
                             >
                                 Assistir Trailer
                             </a>
-                            <button className="save-button">
-                                Salvar
+                            <button 
+                                className={`save-button ${isSaved ? 'saved' : ''}`}
+                                onClick={toggleSaveMovie}
+                            >
+                                {isSaved ? 'Remover' : 'Salvar'}
                             </button>
                         </div>
 
