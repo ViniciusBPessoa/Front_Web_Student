@@ -1,40 +1,146 @@
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Variáveis de cores */
+:root {
+    --primary-color: #0f051d;
+    --secondary-color: #3a0ca3;
+    --accent-color: #0d0fac;
+    --text-color: #ffffff;
+    --text-secondary: #e0e0e0;
+}
+
+/* Estilos do header */
+.header-container {
+    background: linear-gradient(135deg, var(--primary-color), #1a0933);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     width: 100%;
-    height: 60px;
-    background-color: rgb(9, 3, 12);
-    padding: 0 20px;
-    box-sizing: border-box;
+    padding: 0 2rem;
 }
 
-.header-left {
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    height: 70px;
 }
 
+/* Logo */
 .logo {
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    margin-right: 20px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-color);
+    transition: transform 0.3s ease;
 }
 
-.header-right {
+.logo:hover {
+    transform: scale(1.03);
+}
+
+.logo-icon {
+    margin-right: 10px;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+/* Navegação */
+.nav-links {
     display: flex;
+    gap: 1.5rem;
     align-items: center;
 }
 
-.favoritos {
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     text-decoration: none;
-    cursor: pointer;
-    background-color: white;
-    padding: 5px 10px;
-    color: black;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: all 0.3s;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:active {
+    transform: scale(0.98);
+}
+
+.nav-link.active {
+    color: var(--accent-color);
+}
+
+.nav-icon {
+    font-size: 0.9rem;
+}
+
+/* Efeito especial para o botão de favoritos */
+.nav-links .nav-link:last-child {
+    background: rgba(247, 37, 133, 0.1);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}
+
+.nav-links .nav-link:last-child:hover {
+    background: rgba(247, 37, 133, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-content {
+        height: 60px;
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        display: none;
+    }
+    
+    .nav-link span {
+        display: none;
+    }
+    
+    .nav-link {
+        padding: 0.6rem;
+    }
+    
+    .nav-icon {
+        font-size: 1.1rem;
+        margin: 0;
+    }
 }

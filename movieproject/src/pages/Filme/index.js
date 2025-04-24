@@ -42,7 +42,6 @@ function Filme() {
             const updatedMovies = savedMovies.filter(movie => movie.id !== filme.id);
             localStorage.setItem('savedMovies', JSON.stringify(updatedMovies));
             setIsSaved(false);
-            alert('Filme removido da sua lista!');
         } else {
             // Adicionar o filme
             const movieToSave = {
@@ -59,7 +58,6 @@ function Filme() {
             const updatedMovies = [...savedMovies, movieToSave];
             localStorage.setItem('savedMovies', JSON.stringify(updatedMovies));
             setIsSaved(true);
-            alert('Filme salvo com sucesso!');
         }
     };
 

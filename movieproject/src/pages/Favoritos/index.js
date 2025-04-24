@@ -18,9 +18,7 @@ function FilmesSalvos() {
     // Atualiza o localStorage e o estado
     localStorage.setItem('savedMovies', JSON.stringify(novaLista));
     setFilmesSalvos(novaLista);
-    
-    alert('Filme removido com sucesso!');
-  };
+      };
 
   return (
     <div className="container-salvos">
