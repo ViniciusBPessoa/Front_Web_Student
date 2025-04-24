@@ -35,6 +35,11 @@ const Home = () => {
                     </p>
                 </div>
             </section>
+
+            <div>
+                <h1>Projetos Desenvolvidos</h1>
+            </div>
+
         </div>
     );
 };
