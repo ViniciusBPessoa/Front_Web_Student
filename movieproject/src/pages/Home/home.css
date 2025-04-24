@@ -1,4 +1,59 @@
-.listaFilmes{
-    max-width: 800px;
-    margin: 0px auto;
-}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .loading-container, .error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(23, 62, 170, 0.2);
+    border-radius: 50%;
+    border-top-color: rgb(23, 62, 170);
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .error-message {
+    color: #d32f2f;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .page-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, rgb(23, 62, 170), rgb(30, 75, 200));
+  }
+  
+  .listaFilmes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+  }
