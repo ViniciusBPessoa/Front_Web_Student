@@ -1,10 +1,16 @@
-
-body{
+body {
     background-color: #10151D;
 }
 
-.profile-content{
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.profile-content {
     display: flex;
+    flex-direction: row;
     align-items: center;
     padding: 20px;
     border-radius: 10px;
@@ -21,21 +27,27 @@ body{
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.profile-text{
+.profile-text {
     color: #E2E8F0;
 }
 
-.profile-text h1{
+.profile-text h1 {
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
 }
 
-.profile-text span{
+.highlight {
     color: #4437b9;
 }
 
-/* Seção de Conhecimentos - Estilo Moderno */
+.home-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #CBD5E0;
+}
+
+/* Knowledge Section */
 .knowledge-section {
     background-color: #1A202C;
     border-radius: 12px;
@@ -79,37 +91,48 @@ body{
 }
 
 .github-link {
-    font-size: 18px;
-    color: #CBD5E0;
-}
-
-.github-link a {
     color: #6B46C1;
     text-decoration: none;
     font-weight: 600;
-    margin-left: 8px;
+    margin-left: 5px;
     transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
+    display: inline;
 }
 
-.github-link a:hover {
+.github-link:hover {
     color: #4437b9;
     text-decoration: underline;
 }
 
-.github-link a::after {
-    content: '→';
-    margin-left: 6px;
-    transition: transform 0.3s ease;
+/* Loading and Error States */
+.loading, .error {
+    color: #E2E8F0;
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
 }
 
-.github-link a:hover::after {
-    transform: translateX(3px);
+.error {
+    color: #ff6b6b;
 }
 
-/* Responsivo */
+/* Responsive Design */
 @media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .perfil-icon {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .profile-text h1 {
+        font-size: 32px;
+    }
+    
     .knowledge-section {
         padding: 20px;
     }
@@ -118,7 +141,10 @@ body{
         font-size: 28px;
     }
     
-    .knowledge-text,
+    .knowledge-text {
+        font-size: 16px;
+    }
+    
     .github-link {
         font-size: 16px;
     }
