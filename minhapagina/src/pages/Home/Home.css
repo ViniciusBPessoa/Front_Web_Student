@@ -1,151 +1,168 @@
+:root {
+--color-background: #10151D;
+--color-primary: #4437b9;
+--color-primary-light: #6B46C1;
+--color-text: #dbe3ee;
+--color-section-bg: #1A202C;
+--color-error: #ff6b6b;
+
+--shadow-default: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+--border-radius: 10px;
+--border-highlight: 3px solid var(--color-primary);
+}
+  
 body {
-    background-color: #10151D;
+background-color: var(--color-background);
 }
 
 .home-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+max-width: 1200px;
+margin: 0 auto;
+padding: 40px 20px;
 }
 
 .profile-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    gap: 30px;
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 20px;
+border-radius: var(--border-radius);
+margin-bottom: 20px;
+gap: 30px;
 }
 
 .perfil-icon {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #4437b9;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+width: 250px;
+height: 250px;
+border-radius: 50%;
+object-fit: cover;
+border: var(--border-highlight);
+box-shadow: var(--shadow-default);
 }
 
 .profile-text {
-    color: #E2E8F0;
+color: var(--color-text);
 }
 
 .profile-text h1 {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 10px;
+font-size: 40px;
+font-weight: 700;
+margin-bottom: 10px;
 }
 
 .highlight {
-    color: #4437b9;
+color: var(--color-primary);
 }
 
 .home-description {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #CBD5E0;
+font-size: 18px;
+line-height: 1.6;
+color: var(--color-text);
 }
 
 /* Knowledge Section */
 .knowledge-section {
-    background-color: #1A202C;
-    border-radius: 12px;
-    padding: 30px;
-    margin-top: 40px;
-    border-left: 4px solid #4437b9;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+background-color: var(--color-section-bg);
+border-radius: 12px;
+padding: 30px;
+margin-top: 40px;
+border-left: 4px solid var(--color-primary);
+box-shadow: var(--shadow-default);
 }
 
 .section-title {
-    font-size: 32px;
-    font-weight: 700;
-    color: #E2E8F0;
-    margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
+font-size: 32px;
+font-weight: 700;
+color: var(--color-text);
+margin-bottom: 20px;
+position: relative;
+display: inline-block;
 }
 
 .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: #4437b9;
-    border-radius: 3px;
+content: '';
+position: absolute;
+bottom: -3px;
+left: 0;
+width: 60px;
+height: 3px;
+background: var(--color-primary);
+border-radius: 3px;
 }
 
 .knowledge-content {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+display: flex;
+flex-direction: column;
+gap: 25px;
 }
 
 .knowledge-text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #E2E8F0;
-    max-width: 800px;
+font-size: 18px;
+line-height: 1.7;
+color: var(--color-text);
+max-width: 800px;
 }
 
 .github-link {
-    color: #6B46C1;
-    text-decoration: none;
-    font-weight: 600;
-    margin-left: 5px;
-    transition: all 0.3s ease;
-    display: inline;
+color: var(--color-primary-light);
+text-decoration: none;
+font-weight: 600;
+margin-left: 5px;
+transition: all 0.3s ease;
+display: inline;
 }
 
 .github-link:hover {
-    color: #4437b9;
-    text-decoration: underline;
+color: var(--color-primary);
+text-decoration: underline;
 }
 
-/* Loading and Error States */
 .loading, .error {
-    color: #E2E8F0;
-    text-align: center;
-    padding: 40px;
-    font-size: 18px;
+color: var(--color-text);
+text-align: center;
+padding: 40px;
+font-size: 18px;
 }
 
 .error {
-    color: #ff6b6b;
+color: var(--color-error);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-    .profile-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .perfil-icon {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .profile-text h1 {
-        font-size: 32px;
-    }
-    
-    .knowledge-section {
-        padding: 20px;
-    }
-    
-    .section-title {
-        font-size: 28px;
-    }
-    
-    .knowledge-text {
-        font-size: 16px;
-    }
-    
-    .github-link {
-        font-size: 16px;
-    }
+.profile-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+
+.perfil-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.profile-text h1 {
+    font-size: 32px;
+}
+
+.knowledge-section {
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 28px;
+}
+
+.knowledge-text {
+    font-size: 16px;
+}
+
+.github-link {
+    font-size: 16px;
+}
+}
+
+.Project-Area {
+color: var(--color-text);
+margin-top: 20px;
 }

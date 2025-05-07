@@ -1,9 +1,11 @@
-// minhapagina/src/pages/Home/Home.js
 import React, { useState, useEffect } from 'react';
 import './Home.css';
+
 import Perfil from './imgs/perfil.png';
 import { db } from '../../components/firebase';
 import { doc, getDoc } from "firebase/firestore";
+
+import KnowledgeSection from '../../components/knowledgeArea';
 
 const Home = () => {
     const [data, setData] = useState(null);
@@ -15,7 +17,7 @@ const Home = () => {
             try {
                 const docRef = doc(db, "Informations", "portuguese");
                 const docSnap = await getDoc(docRef);
-                
+
                 if (docSnap.exists()) {
                     setData(docSnap.data());
                 } else {
@@ -53,21 +55,11 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="knowledge-section">
-                <h2 className="section-title">{data.knowledge || "Conhecimentos"}</h2>
-                <div className="knowledge-content">
-                    <p className="knowledge-text">
-                        {data['knowledge-description'] || "Graduação em Ciências da Computação na Universidade Federal Rural de Pernambuco (UFRPE)"}
-                        {' '}
-                        <a href={`https://github.com/${data.Github}`} target="_blank" rel="noopener noreferrer" className="github-link">
-                            {data.Github || "ViniciusBPessoa"}
-                        </a>
-                    </p>
-                </div>
-            </section>
+            {/* Substitua a seção pelo novo componente */}
+            <KnowledgeSection data={data} />
 
-            <div>
-                <h1>Projetos Desenvolvidos</h1>
+            <div className="projects-section">
+                <h1 className="Project-Area">Projetos Desenvolvidos</h1>
             </div>
         </div>
     );
