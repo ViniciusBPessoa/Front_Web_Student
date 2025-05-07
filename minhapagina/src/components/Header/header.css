@@ -24,11 +24,4 @@
     transform: scale(1.1); /* Aumenta levemente ao passar o mouse */
   }
   
-  /* Estilos para o texto "Inglês" */
-  .language-text {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff;
-  }
   

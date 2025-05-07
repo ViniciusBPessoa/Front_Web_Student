@@ -1,168 +1,255 @@
 :root {
---color-background: #10151D;
---color-primary: #4437b9;
---color-primary-light: #6B46C1;
---color-text: #dbe3ee;
---color-section-bg: #1A202C;
---color-error: #ff6b6b;
+    --color-background: #10151D;
+    --color-primary: #4437b9;
+    --color-primary-light: #6B46C1;
+    --color-text: #dbe3ee;
+    --color-section-bg: #1A202C;
+    --color-error: #ff6b6b;
 
---shadow-default: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow-default: 0 4px 20px rgba(0, 0, 0, 0.2);
 
---border-radius: 10px;
---border-highlight: 3px solid var(--color-primary);
+    --border-radius: 10px;
+    --border-highlight: 3px solid var(--color-primary);
 }
-  
+
 body {
-background-color: var(--color-background);
+    background-color: var(--color-background);
 }
 
 .home-container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+}
+
+/* Seletor de Idiomas Simplificado */
+.language-selector-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.language-selector {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    transition: background 0.3s ease;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background 0.2s ease;
+}
+
+.language-option .flag {
+    font-size: 18px;
+}
+
+.language-option .language-name {
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.75;
+}
+
+.language-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.language-option:hover .language-name {
+    opacity: 1;
+}
+
+.language-option.active {
+    background: var(--color-primary);
+}
+
+.language-option.active .language-name {
+    color: white;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.language-option.active .flag {
+    transform: none;
+}
+
+.divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 4px 0;
 }
 
 .profile-content {
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 20px;
-border-radius: var(--border-radius);
-margin-bottom: 20px;
-gap: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    gap: 30px;
 }
 
 .perfil-icon {
-width: 250px;
-height: 250px;
-border-radius: 50%;
-object-fit: cover;
-border: var(--border-highlight);
-box-shadow: var(--shadow-default);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: var(--border-highlight);
+    box-shadow: var(--shadow-default);
 }
 
 .profile-text {
-color: var(--color-text);
+    color: var(--color-text);
 }
 
 .profile-text h1 {
-font-size: 40px;
-font-weight: 700;
-margin-bottom: 10px;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .highlight {
-color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .home-description {
-font-size: 18px;
-line-height: 1.6;
-color: var(--color-text);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text);
 }
 
-/* Knowledge Section */
 .knowledge-section {
-background-color: var(--color-section-bg);
-border-radius: 12px;
-padding: 30px;
-margin-top: 40px;
-border-left: 4px solid var(--color-primary);
-box-shadow: var(--shadow-default);
+    background-color: var(--color-section-bg);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-default);
 }
 
 .section-title {
-font-size: 32px;
-font-weight: 700;
-color: var(--color-text);
-margin-bottom: 20px;
-position: relative;
-display: inline-block;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
 }
 
 .section-title::after {
-content: '';
-position: absolute;
-bottom: -3px;
-left: 0;
-width: 60px;
-height: 3px;
-background: var(--color-primary);
-border-radius: 3px;
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 3px;
 }
 
 .knowledge-content {
-display: flex;
-flex-direction: column;
-gap: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .knowledge-text {
-font-size: 18px;
-line-height: 1.7;
-color: var(--color-text);
-max-width: 800px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--color-text);
+    max-width: 800px;
 }
 
 .github-link {
-color: var(--color-primary-light);
-text-decoration: none;
-font-weight: 600;
-margin-left: 5px;
-transition: all 0.3s ease;
-display: inline;
+    color: var(--color-primary-light);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+    display: inline;
 }
 
 .github-link:hover {
-color: var(--color-primary);
-text-decoration: underline;
+    color: var(--color-primary);
+    text-decoration: underline;
 }
 
-.loading, .error {
-color: var(--color-text);
-text-align: center;
-padding: 40px;
-font-size: 18px;
+.loading,
+.error {
+    color: var(--color-text);
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
 }
 
 .error {
-color: var(--color-error);
-}
-
-@media (max-width: 768px) {
-.profile-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-}
-
-.perfil-icon {
-    width: 200px;
-    height: 200px;
-}
-
-.profile-text h1 {
-    font-size: 32px;
-}
-
-.knowledge-section {
-    padding: 20px;
-}
-
-.section-title {
-    font-size: 28px;
-}
-
-.knowledge-text {
-    font-size: 16px;
-}
-
-.github-link {
-    font-size: 16px;
-}
+    color: var(--color-error);
 }
 
 .Project-Area {
-color: var(--color-text);
-margin-top: 20px;
+    color: var(--color-text);
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .perfil-icon {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-text h1 {
+        font-size: 32px;
+    }
+
+    .knowledge-section {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .knowledge-text {
+        font-size: 16px;
+    }
+
+    .github-link {
+        font-size: 16px;
+    }
+
+    .language-selector-wrapper {
+        top: 10px;
+        right: 10px;
+    }
+
+    .language-option {
+        padding: 5px 10px;
+    }
+
+    .language-option .language-name {
+        font-size: 12px;
+    }
+
+    .language-option .flag {
+        font-size: 16px;
+    }
 }

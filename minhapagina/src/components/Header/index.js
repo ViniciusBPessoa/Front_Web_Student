@@ -17,20 +17,15 @@ const Header = () => {
         <a href="https://github.com/ViniciusBPessoa" target="_blank" rel="noopener noreferrer">
           <img src={gitHub} alt="github" className="social-icon" />
         </a>
-        <a 
-        href="mailto:contato@vinicius.com" 
-        title="Enviar e-mail"
-        aria-label="Enviar e-mail"
-        target="_blank" 
-        rel="noopener noreferrer"
+        <a
+          href="mailto:contato@vinicius.com"
+          title="Enviar e-mail"
+          aria-label="Enviar e-mail"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-        <img src={email} alt="Ícone de e-mail" className="social-icon" />
-      </a>
-      </div>
-
-      {/* Texto "Inglês" (lado direito) */}
-      <div className="language-text">
-        <p>Inglês</p>
+          <img src={email} alt="Ícone de e-mail" className="social-icon" />
+        </a>
       </div>
     </header>
   );
