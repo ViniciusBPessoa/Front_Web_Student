@@ -1,0 +1,113 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .popup-title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .popup-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0 8px;
+    line-height: 1;
+  }
+  
+  .popup-close-btn:hover {
+    color: #333;
+  }
+  
+  .popup-description {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+    line-height: 1.6;
+  }
+  
+  .popup-footer {
+    padding: 16px 20px;
+    border-top: 1px solid #e9ecef;
+    text-align: right;
+  }
+  
+  .popup-link-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4437b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .popup-link-btn:hover {
+    background-color: #362a94;
+  }
+  
+  /* Estilos para o conteúdo Markdown */
+  .popup-description h1, 
+  .popup-description h2, 
+  .popup-description h3 {
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+  }
+  
+  .popup-description p {
+    margin-bottom: 1em;
+  }
+  
+  .popup-description ul, 
+  .popup-description ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+  }
+  
+  .popup-description code {
+    background-color: #f3f3f3;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+  }
+  
+  .popup-description pre {
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+  }

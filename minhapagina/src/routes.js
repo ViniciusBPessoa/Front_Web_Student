@@ -10,13 +10,13 @@ function RoutesApp() {
   return (
     <BrowserRouter>
       <div className="app-container">
-        <Header/>
+        <Header />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </BrowserRouter>
   );
