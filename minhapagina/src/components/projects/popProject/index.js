@@ -1,4 +1,3 @@
-// components/MarkdownModal.jsx
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
@@ -40,4 +39,4 @@ const popProject = ({ isOpen, onClose, title, description, link }) => {
   );
 };
 
-export default popProject;
+export default popProject; // Note a letra maiúscula aqui também
