@@ -1,48 +1,42 @@
-import React, { useState } from "react";
-import PopProject from "../../components/projects/popProject"; // Importando o componente PopProject
+import React, { useState } from 'react';
+import PopProject from '../../components/projects/popProject';
+import './TestPage.css';
 
-const TestPage = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+function TestPage() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    // Conteúdo markdown de exemplo
-    const markdownContent = `
-# Título do Projeto
+  const handleOpenPopup = () => setIsPopupOpen(true);
+  const handleClosePopup = () => setIsPopupOpen(false);
 
-Este é um **projeto de exemplo** com Markdown!
+  return (
+    <div className="test-page">
+      <h1 className="text-apresentation">Página de Teste</h1>
 
-## Funcionalidades
+      <button onClick={handleOpenPopup} className="open-popup-btn">
+        Abrir Popup
+      </button>
 
-- Modal responsivo
-- Suporte a Markdown
-- Botão de fechar
-- Link externo
+      <PopProject
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        title="Título Exemplo"
+        description={`Um site currículo moderno e responsivo, desenvolvido para exibir meus projetos, habilidades e experiência profissional.
 
-\`\`\`javascript
-// Código de exemplo
-const hello = () => {
-    console.log("Hello World!");
+**Tecnologias e Recursos**
+🔹 Front-end: React ou Next.js com TypeScript.  
+🔹 Design: Tailwind CSS ou Styled Components.  
+🔹 Integração: Firebase Firestore para dados dinâmicos.  
+🔹 SEO Otimizado para o Google.  
+🔹 Dark Mode: alternância entre temas claro e escuro.
+
+**Objetivo**: Apresentar meu trabalho de forma elegante e interativa, facilitando o contato de recrutadores.`}
+        technologies={['React.js', 'Firebase']}
+        date="2023"
+        link="https://github.com/ViniciusBPessoa/Web_Student/tree/main/minhapagina"
+        type="WEB"
+      />
+    </div>
+  );
 }
-\`\`\`
-    `;
-
-    return (
-        <div className="flex items-center justify-center h-screen">
-            <button
-                onClick={() => setIsModalOpen(true)}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-                Abrir Modal de Teste
-            </button>
-
-            <PopProject
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                title="Projeto de Teste"
-                description={markdownContent}
-                link="https://github.com"
-            />
-        </div>
-    );
-};
 
 export default TestPage;
