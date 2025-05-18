@@ -1,0 +1,46 @@
+.type-section {
+  margin-bottom: 4rem;
+}
+
+.type-title {
+  color: var(--color-text);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.type-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 80%;
+  background: var(--color-highlight);
+  border-radius: 2px;
+}
+
+.projects-scroll-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 2rem 3rem; /* Aumentei o padding */
+  margin: 0 -3rem; /* Margem negativa para compensar */
+  scroll-padding: 3rem; /* Garante espaço ao scrollar */
+}
+
+/* Opcional: Barra de scroll mais visível */
+.projects-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+.projects-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--color-highlight);
+  border-radius: 4px;
+}
+
+.projects-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+

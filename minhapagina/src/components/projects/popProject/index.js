@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import {
-  FaTimes,
-  FaExternalLinkAlt,
-  FaCode,
-  FaGlobe,
-} from 'react-icons/fa';
+import { FaTimes, FaExternalLinkAlt, FaCode, FaGlobe } from 'react-icons/fa';
 import './popProject.css';
 
 const PopProject = ({
@@ -51,6 +46,13 @@ const PopProject = ({
         </div>
 
         <div className="popup-body">
+          <div className="description-section">
+            <h3 className="section-pop-title">Descrição</h3>
+            <div className="description-text markdown-content">
+              <ReactMarkdown>{description}</ReactMarkdown>
+            </div>
+          </div>
+
           <div className="popup-details">
             <div className="detail-row">
               <FaGlobe className="detail-icon" />
@@ -71,15 +73,10 @@ const PopProject = ({
                 </div>
               </div>
             )}
-
-            <div className="description-section">
-              <h3 className="section-title">Descrição</h3>
-              <div className="description-text markdown-content">
-                <ReactMarkdown>{description}</ReactMarkdown>
-              </div>
-            </div>
           </div>
         </div>
+
+        <div className="popup-divider"></div>
 
         {link && (
           <div className="popup-footer">
