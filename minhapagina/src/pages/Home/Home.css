@@ -198,3 +198,27 @@ body {
         font-size: 16px;
     }
 }
+
+/* Adicione isso no seu Home.css */
+.projects-section {
+    margin-top: 4rem;
+    padding: 2rem 0;
+}
+
+/* Opcional: para melhorar a visualização dos projetos */
+.Project-Area {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.Project-Area::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--color-highlight);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}

@@ -1,6 +1,6 @@
 /* KnowledgeSection.css */
 .knowledge-section {
-    background-color: var(--color-section-bg);
+    background-color: var(--color-secondary);
     border-radius: 12px;
     padding: 30px;
     margin-top: 40px;
