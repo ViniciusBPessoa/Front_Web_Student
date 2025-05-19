@@ -85,7 +85,7 @@ const Home = () => {
 
     return (
         <div className="home-container">
-            {/* Seletor de Idiomas Premium */}
+            {/* Seletor de Idiomas */}
             <div className="language-selector-wrapper">
                 <div className={`language-selector ${isChanging ? "changing" : ""}`}>
                     <button
@@ -93,7 +93,7 @@ const Home = () => {
                         className={`language-option ${language === "portuguese" ? "active" : ""}`}
                         aria-label="Português"
                     >
-                        <span className="flag">🇧🇷</span>
+                        <span className="flag" role="img" aria-label="Bandeira do Brasil">🇧🇷</span>
                         <span className="language-name">Português</span>
                     </button>
                     
@@ -104,7 +104,7 @@ const Home = () => {
                         className={`language-option ${language === "english" ? "active" : ""}`}
                         aria-label="English"
                     >
-                        <span className="flag">🇺🇸</span>
+                        <span className="flag" role="img" aria-label="Bandeira dos EUA">🇺🇸</span>
                         <span className="language-name">English</span>
                     </button>
                 </div>
