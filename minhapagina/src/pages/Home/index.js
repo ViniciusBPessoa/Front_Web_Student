@@ -20,36 +20,31 @@ const Home = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            setLoading(true);
             try {
-                // Busca informações do perfil
-                const docRef = doc(db, "Informations", language);
-                const docSnap = await getDoc(docRef);
+                setLoading(true);
 
-                if (docSnap.exists()) {
-                    setData(docSnap.data());
+                // Alterna entre collections com base na linguagem
+                const collectionName = language === "english" ? "projects-ing" : "projects";
+
+                const [profileDoc, typesDoc, projectsSnap] = await Promise.all([
+                    getDoc(doc(db, "Informations", language)),
+                    getDoc(doc(db, "tipeALL", "tipeALL")),
+                    getDocs(collection(db, collectionName)),
+                ]);
+
+                if (profileDoc.exists()) {
+                    setData(profileDoc.data());
                     setError(null);
                 } else {
                     setError("Documento não encontrado no Firebase");
-                    setData(null);
                 }
 
-                // Busca tipos de projetos
-                const typesDoc = await getDoc(doc(db, "tipeALL", "tipeALL"));
-                if (typesDoc.exists()) {
-                    setProjectTypes(typesDoc.data().tipeALL || []);
-                }
+                setProjectTypes(typesDoc.exists() ? typesDoc.data().tipeALL || [] : []);
 
-                // Busca todos os projetos
-                const projectsSnapshot = await getDocs(collection(db, "projects"));
-                const projectsList = [];
-                projectsSnapshot.forEach((doc) => {
-                    projectsList.push({ id: doc.id, ...doc.data() });
-                });
-                setAllProjects(projectsList);
+                const projects = projectsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setAllProjects(projects);
             } catch (err) {
                 setError("Erro ao carregar dados: " + err.message);
-                setData(null);
             } finally {
                 setLoading(false);
             }
@@ -57,17 +52,6 @@ const Home = () => {
 
         fetchData();
     }, [language]);
-
-    const getProjectsByType = (type) => {
-        return allProjects.filter(project => project.tipe === type);
-    };
-
-    const handleProjectClick = (project) => {
-        setSelectedProject(project);
-        setIsPopupOpen(true);
-    };
-
-    const handleClosePopup = () => setIsPopupOpen(false);
 
     const changeLanguage = (lang) => {
         if (language !== lang) {
@@ -79,9 +63,11 @@ const Home = () => {
         }
     };
 
+    const getProjectsByType = (type) =>
+        allProjects.filter(project => project.tipe === type);
+
     if (loading) return <div className="loading">Carregando...</div>;
     if (error) return <div className="error">{error}</div>;
-    if (!data) return <div className="error">Dados não disponíveis</div>;
 
     return (
         <div className="home-container">
@@ -96,9 +82,9 @@ const Home = () => {
                         <span className="flag" role="img" aria-label="Bandeira do Brasil">🇧🇷</span>
                         <span className="language-name">Português</span>
                     </button>
-                    
+
                     <div className="divider"></div>
-                    
+
                     <button
                         onClick={() => changeLanguage("english")}
                         className={`language-option ${language === "english" ? "active" : ""}`}
@@ -116,19 +102,19 @@ const Home = () => {
                     <div className="perfil-img">
                         <img
                             src={Perfil}
-                            alt={data.name || "Vinicius Bezerra"}
+                            alt={data?.name || "Vinicius Bezerra"}
                             className="perfil-icon"
                         />
                     </div>
                     <div className="profile-text">
                         <h1 className="home-title">
-                            {data.presentation || "Olá, eu sou o"}{" "}
+                            {data?.presentation || "Olá, eu sou o"}{" "}
                             <span className="highlight">
-                                {data.name || "Vinicius Bezerra"}
+                                {data?.name || "Vinicius Bezerra"}
                             </span>
                         </h1>
                         <p className="home-description">
-                            {data.description || "Sou estudante de Ciências da Computação..."}
+                            {data?.description || "Sou estudante de Ciências da Computação..."}
                         </p>
                     </div>
                 </div>
@@ -142,23 +128,25 @@ const Home = () => {
                 <h1 className="Project-Area">
                     {language === "portuguese" ? "Projetos Desenvolvidos" : "Developed Projects"}
                 </h1>
-                
-                {/* Renderiza uma seção para cada tipo de projeto */}
-                {projectTypes.map((type) => (
+
+                {projectTypes.map(type => (
                     <ProjectTypeSection
                         key={type}
                         type={type}
                         projects={getProjectsByType(type)}
-                        onProjectClick={handleProjectClick}
+                        onProjectClick={(project) => {
+                            setSelectedProject(project);
+                            setIsPopupOpen(true);
+                        }}
                     />
                 ))}
             </div>
 
-            {/* Popup do projeto selecionado */}
+            {/* Popup de Projeto */}
             {selectedProject && (
                 <PopProject
                     isOpen={isPopupOpen}
-                    onClose={handleClosePopup}
+                    onClose={() => setIsPopupOpen(false)}
                     title={selectedProject.title}
                     description={selectedProject.description}
                     technologies={selectedProject.technology}
