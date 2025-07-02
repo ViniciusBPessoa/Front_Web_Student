@@ -1,27 +1,30 @@
-/* Estilos para o container do Header */
 .header-container {
-    display: flex;
-    justify-content: space-between; /* Alinha os itens nas extremidades */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #101532; /* Cor de fundo branca */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  }
-  
-  /* Estilos para os ícones sociais */
-  .social-icons {
-    display: flex;
-    gap: 15px; /* Espaço entre os ícones */
-  }
-  
-  .social-icon {
-    width: 30px; /* Tamanho dos ícones */
-    height: 30px;
-    transition: transform 0.2s; /* Efeito de hover suave */
-  }
-  
-  .social-icon:hover {
-    transform: scale(1.1); /* Aumenta levemente ao passar o mouse */
-  }
-  
-  
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #101532;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.social-icon-wrapper {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
