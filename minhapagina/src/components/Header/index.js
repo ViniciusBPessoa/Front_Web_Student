@@ -1,23 +1,14 @@
-import React from 'react';
+// src/components/Header/index.js
+
 import './header.css';
-import linkedin from './imgs/linkedin.png';
-import gitHub from './imgs/gitHub.png';
-import email from './imgs/email.png';
+import linkedin from '../../imgs/linkedin.png';
+import gitHub from '../../imgs/gitHub.png';
+import email from '../../imgs/email.png';
+import { copyEmailToClipboard } from '../../utils/copyEmailToClipboard';
 
 const Header = () => {
   const handleEmailClick = () => {
-    const emailAddress = 'contato@vinicius.com';
-    navigator.clipboard.writeText(emailAddress)
-      .catch((err) => {
-        console.error('Falha ao copiar e-mail:', err);
-        // Fallback para navegadores antigos
-        const textArea = document.createElement('textarea');
-        textArea.value = emailAddress;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      });
+    copyEmailToClipboard('vinicius.pessoa@example.com'); // substitua pelo seu e-mail real
   };
 
   return (
