@@ -1,21 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
+
+// Imagem de perfil local
 import Perfil from './imgs/perfil.png';
+
+// Importa conexão com o Firebase Firestore
 import { db } from '../../components/firebase';
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+
+// Importa componentes reutilizáveis da aplicação
 import KnowledgeSection from '../../components/knowledgeArea';
 import PopProject from '../../components/projects/popProject';
 import ProjectTypeSection from '../../components/projects/ProjectTypeSection';
 
 const Home = () => {
-    const [language, setLanguage] = useState("portuguese");
+    // Define o idioma atual, carregando o valor salvo no sessionStorage ou default para "portuguese"
+    const [language, setLanguage] = useState(() => {
+        return sessionStorage.getItem("language") || "portuguese";
+    });
+
+    // Estado para armazenar os dados principais do perfil (nome, descrição, etc.)
     const [data, setData] = useState(null);
+
+    // Estado de carregamento da página
     const [loading, setLoading] = useState(true);
+
+    // Armazena mensagens de erro, se houver
     const [error, setError] = useState(null);
+
+    // Controla o efeito visual de troca de idioma
     const [isChanging, setIsChanging] = useState(false);
+
+    // Controla a exibição do popup de projeto
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    // Lista com os tipos de projeto (ex: Web, Mobile, etc.)
     const [projectTypes, setProjectTypes] = useState([]);
+
+    // Lista com todos os projetos carregados do Firebase
     const [allProjects, setAllProjects] = useState([]);
+
+    // Projeto selecionado para ser exibido no popup
     const [selectedProject, setSelectedProject] = useState(null);
 
     useEffect(() => {
@@ -23,50 +48,63 @@ const Home = () => {
             try {
                 setLoading(true);
 
-                // Alterna entre collections com base na linguagem
+                // Define o nome da collection com base no idioma
                 const collectionName = language === "english" ? "projects-ing" : "projects";
 
+                // Faz 3 requisições ao Firebase em paralelo:
+                // 1. Dados do perfil
+                // 2. Tipos de projeto
+                // 3. Lista de projetos
                 const [profileDoc, typesDoc, projectsSnap] = await Promise.all([
                     getDoc(doc(db, "Informations", language)),
                     getDoc(doc(db, "tipeALL", "tipeALL")),
                     getDocs(collection(db, collectionName)),
                 ]);
 
+                // Verifica se o documento de perfil existe
                 if (profileDoc.exists()) {
-                    setData(profileDoc.data());
+                    setData(profileDoc.data()); // Salva os dados na seção de atual
                     setError(null);
                 } else {
                     setError("Documento não encontrado no Firebase");
                 }
 
+                // Define os tipos de projeto ou um array vazio se não encontrar
                 setProjectTypes(typesDoc.exists() ? typesDoc.data().tipeALL || [] : []);
 
+                // Mapeia os projetos para um array de objetos com ID
                 const projects = projectsSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 setAllProjects(projects);
             } catch (err) {
-                setError("Erro ao carregar dados: " + err.message);
+                setError("Erro ao carregar dados: " + err.message); // Erro ao carregar dados
             } finally {
-                setLoading(false);
+                setLoading(false); // Esconde o carregamento
             }
         };
 
-        fetchData();
-    }, [language]);
+        fetchData(); // Chama a função assíncrona
+    }, [language]); // Só roda quando o idioma mudar
 
+    // Função que altera o idioma da interface
     const changeLanguage = (lang) => {
         if (language !== lang) {
-            setIsChanging(true);
+            setIsChanging(true); // Ativa a animação
             setTimeout(() => {
-                setLanguage(lang);
-                setIsChanging(false);
-            }, 200);
+                sessionStorage.setItem("language", lang); // Salva no sessionStorage
+                setLanguage(lang); // Atualiza o estado
+                setIsChanging(false); // Encerra animação
+            }, 200); // Delay para efeito visual
         }
     };
 
+    // Filtra os projetos por tipo
     const getProjectsByType = (type) =>
         allProjects.filter(project => project.tipe === type);
 
+    // Enquanto carrega, exibe tela de carregamento
     if (loading) return <div className="loading">Carregando...</div>;
+
+    // Se ocorrer erro, mostra a mensagem
     if (error) return <div className="error">{error}</div>;
 
     return (
@@ -129,6 +167,7 @@ const Home = () => {
                     {language === "portuguese" ? "Projetos Desenvolvidos" : "Developed Projects"}
                 </h1>
 
+                {/* Para cada tipo de projeto, renderiza um grupo de cards */}
                 {projectTypes.map(type => (
                     <ProjectTypeSection
                         key={type}
@@ -142,7 +181,7 @@ const Home = () => {
                 ))}
             </div>
 
-            {/* Popup de Projeto */}
+            {/* Popup com informações do projeto selecionado */}
             {selectedProject && (
                 <PopProject
                     isOpen={isPopupOpen}

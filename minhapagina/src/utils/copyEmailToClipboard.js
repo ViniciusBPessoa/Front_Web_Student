@@ -1,7 +1,11 @@
-// src/utils/copyEmail.js
+import toast from 'react-hot-toast';
+
+const copiedMSG = ['E-mail copied successfully!', 'E-mail copiado com sucesso!'];
 
 export const copyEmailToClipboard = (email) => {
+  const lang = sessionStorage.getItem("language");
+
   navigator.clipboard.writeText(email).then(() => {
-      alert('E-mail copiado para a área de transferência!');
-    })
+    toast.success(lang === 'english' ? copiedMSG[0] : copiedMSG[1]);
+  })
 };

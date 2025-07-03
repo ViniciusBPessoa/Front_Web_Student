@@ -1,14 +1,14 @@
-// src/components/Header/index.js
-
 import './header.css';
-import linkedin from '../../imgs/linkedin.png';
-import gitHub from '../../imgs/gitHub.png';
-import email from '../../imgs/email.png';
+
+import linkedin from './imgs/linkedin.png';
+import gitHub from './imgs/gitHub.png';
+import email from './imgs/email.png';
+
 import { copyEmailToClipboard } from '../../utils/copyEmailToClipboard';
 
 const Header = () => {
   const handleEmailClick = () => {
-    copyEmailToClipboard('vinicius.pessoa@example.com'); // substitua pelo seu e-mail real
+    copyEmailToClipboard('viniciusbpessoa02@gmail.com');
   };
 
   return (

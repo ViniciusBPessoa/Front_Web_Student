@@ -1,28 +1,13 @@
 import React from 'react';
 import './footer.css';
-// Importe seus ícones (ajuste os caminhos)
 import githubIcon from './imgs/gitHub.png';
 import linkedinIcon from './imgs/linkedin.png';
-import emailIcon from './imgs/email.png'; // Importe o ícone de e-mail
+import emailIcon from './imgs/email.png';
+import { copyEmailToClipboard } from '../../utils/copyEmailToClipboard';
 
 const Footer = () => {
   const handleEmailClick = () => {
-    const emailAddress = 'contato@vinicius.com'; // Mesmo e-mail do Header
-    navigator.clipboard.writeText(emailAddress)
-      .then(() => {
-        alert('E-mail copiado para a área de transferência!');
-      })
-      .catch((err) => {
-        console.error('Falha ao copiar e-mail: ', err);
-        // Fallback para navegadores mais antigos
-        const textArea = document.createElement('textarea');
-        textArea.value = emailAddress;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        alert('E-mail copiado para a área de transferência!');
-      });
+    copyEmailToClipboard("viniciusbpessoa02@gmail.com");
   };
 
   return (
