@@ -15,7 +15,7 @@ const Header = () => {
     <header className="header-container">
       <div className="social-icons">
         <a
-          href="https://www.linkedin.com/in/vinicius-bezerra-b0920b284/"
+          href="https://www.linkedin.com/in/vinicius-b-pessoa/"
           target="_blank"
           rel="noopener noreferrer"
         >

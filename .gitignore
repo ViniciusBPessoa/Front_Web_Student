@@ -1,1 +1,4 @@
 minhapagina/.env
+
+# Local Netlify folder
+.netlify
