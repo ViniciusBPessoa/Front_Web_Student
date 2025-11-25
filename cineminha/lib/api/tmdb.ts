@@ -12,9 +12,16 @@ export const tmdbAPI = axios.create({
 });
 
 // 🎬 PEGA FILMES EM CARTAZ - AGORA MESMO!
-export const getNowPlayingMovies = async () => {
-  const response = await tmdbAPI.get('/movie/now_playing');
-  return response.data.results;
+export const getNowPlayingMovies = async (page: number = 1) => {
+  const response = await tmdbAPI.get('/movie/now_playing', {
+    params: { page }
+  });
+  return {
+    movies: response.data.results,
+    totalPages: response.data.total_pages,
+    currentPage: response.data.page,
+    totalResults: response.data.total_results
+  };
 };
 
 // 🔍 BUSCA FILMES - NA HORA!
@@ -30,3 +37,4 @@ export const getMovieDetails = async (movieId: number) => {
   const response = await tmdbAPI.get(`/movie/${movieId}`);
   return response.data;
 };
+
