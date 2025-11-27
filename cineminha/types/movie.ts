@@ -26,3 +26,11 @@ export interface User {
   name: string;
   savedMovies: number[];
 }
+
+// Adicione esta interface
+export interface MoviesResponse {
+  movies: Movie[];
+  totalPages: number;
+  currentPage: number;
+  totalResults: number;
+}
