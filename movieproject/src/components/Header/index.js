@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaFilm, FaHeart } from "react-icons/fa";
 import "./header.css";
 
@@ -6,17 +6,27 @@ function Header() {
     return (
         <header className="header-container">
             <div className="header-content">
-                <Link className="logo" to="/">
+                <NavLink className="logo" to="/">
                     <FaFilm className="logo-icon" />
-                    <span>Sad</span>Flix
-                </Link>
-                
+                    <span className="logo-sad">Sad</span>
+                    <span className="logo-flix">Flix</span>
+                </NavLink>
+
                 <nav className="nav-links">
-                    <Link className="nav-link" to="/">Início</Link>
-                    <Link className="nav-link" to="/favoritos">
+                    <NavLink
+                        className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                        to="/"
+                        end
+                    >
+                        Início
+                    </NavLink>
+                    <NavLink
+                        className={({ isActive }) => `nav-link nav-link-heart${isActive ? ' active' : ''}`}
+                        to="/favoritos"
+                    >
                         <FaHeart className="nav-icon" />
-                        Meus Filmes
-                    </Link>
+                        <span>Meus Filmes</span>
+                    </NavLink>
                 </nav>
             </div>
         </header>

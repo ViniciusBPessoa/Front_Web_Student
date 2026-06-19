@@ -1,59 +1,270 @@
+/* ── Wrapper ── */
+.home-wrapper {
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+.home-hero {
+  text-align: center;
+  padding: 64px 24px 48px;
+  position: relative;
+}
+
+.home-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(123, 45, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.hero-sub {
+  color: #7a6a90;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+/* ── Results title (search mode) ── */
+.search-results-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #c0b0d8;
+  margin-bottom: 20px;
+  margin-top: 36px;
+}
+
+.search-results-title span {
+  color: #fff;
+}
+
+/* ── Container ── */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .loading-container, .error-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 300px;
-  }
-  
-  .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(23, 62, 170, 0.2);
-    border-radius: 50%;
-    border-top-color: rgb(23, 62, 170);
-    animation: spin 1s ease-in-out infinite;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  .error-message {
-    color: #d32f2f;
-    font-size: 18px;
-    text-align: center;
-  }
-  
-  .page-title {
-    text-align: center;
-    color: #eedede;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    position: relative;
-    padding-bottom: 10px;
-  }
-  
-  .page-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(to right, rgb(23, 62, 170), rgb(30, 75, 200));
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+/* ── Search ── */
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  color: #5a4a70;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 52px;
+  border-radius: 14px;
+  border: 1px solid rgba(123, 45, 255, 0.25);
+  background: rgba(18, 16, 42, 0.8);
+  color: #e8e0f0;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.search-input:focus {
+  border-color: rgba(123, 45, 255, 0.6);
+  background: rgba(18, 16, 42, 1);
+  box-shadow: 0 0 0 3px rgba(123, 45, 255, 0.12), 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.search-input::placeholder {
+  color: #4a3a60;
+}
+
+.search-clear {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #5a4a70;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
+}
+
+.search-clear:hover {
+  color: #e8e0f0;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Genre filter ── */
+.generos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.genero-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #7a6a90;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.2px;
+}
+
+.genero-btn:hover {
+  background: rgba(123, 45, 255, 0.15);
+  border-color: rgba(123, 45, 255, 0.4);
+  color: #c4a8ff;
+}
+
+.genero-btn.active {
+  background: rgba(123, 45, 255, 0.28);
+  border-color: #7b2dff;
+  color: #e0d0ff;
+}
+
+/* ── Movie grid ── */
+.listaFilmes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+/* ── Loading ── */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  gap: 16px;
+  color: #5a4a70;
+  font-size: 0.95rem;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(123, 45, 255, 0.15);
+  border-radius: 50%;
+  border-top-color: #7b2dff;
+  animation: spin 0.9s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Error / Empty ── */
+.error-container,
+.empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 240px;
+}
+
+.error-message {
+  color: #e05060;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.empty-message {
+  color: #4a3a60;
+  font-size: 1.1rem;
+}
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 48px 0 8px;
+}
+
+.page-btn {
+  background: rgba(123, 45, 255, 0.15);
+  border: 1px solid rgba(123, 45, 255, 0.3);
+  color: #c4a8ff;
+  padding: 10px 26px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: rgba(123, 45, 255, 0.3);
+  border-color: #7b2dff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(123, 45, 255, 0.3);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.page-info {
+  color: #5a4a70;
+  font-size: 0.88rem;
+  min-width: 140px;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.2rem; }
+  .home-hero  { padding: 44px 16px 36px; }
+
   .listaFilmes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 20px 0;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
   }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 1.75rem; }
+
+  .listaFilmes {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination { gap: 12px; }
+
+  .page-btn { padding: 8px 18px; font-size: 0.82rem; }
+
+  .page-info { min-width: 90px; }
+}

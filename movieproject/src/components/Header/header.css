@@ -1,16 +1,9 @@
-/* Variáveis de cores */
-:root {
-    --primary-color: #0f051d;
-    --secondary-color: #3a0ca3;
-    --accent-color: #ffffff;
-    --text-color: #ffffff;
-    --text-secondary: #e0e0e0;
-}
-
-/* Estilos do header */
+/* ── Header ── */
 .header-container {
-    background: linear-gradient(135deg, var(--primary-color), #1a0933);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(10, 8, 20, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(123, 45, 255, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -24,123 +17,128 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 68px;
 }
 
-/* Logo */
+/* ── Logo ── */
 .logo {
     display: flex;
     align-items: center;
+    gap: 10px;
     text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: var(--text-color);
-    transition: transform 0.3s ease;
+    font-size: 1.75rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    transition: opacity 0.2s;
 }
 
 .logo:hover {
-    transform: scale(1.03);
+    opacity: 0.85;
 }
 
 .logo-icon {
-    margin-right: 10px;
-    color: var(--accent-color);
-    font-size: 1.5rem;
+    color: #7b2dff;
+    font-size: 1.4rem;
+    filter: drop-shadow(0 0 8px rgba(123, 45, 255, 0.6));
 }
 
-.logo span {
-    color: var(--accent-color);
+.logo-sad {
+    background: linear-gradient(135deg, #7b2dff, #c026d3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/* Navegação */
+.logo-flix {
+    color: #fff;
+}
+
+/* ── Nav ── */
 .nav-links {
     display: flex;
-    gap: 1.5rem;
+    gap: 6px;
     align-items: center;
 }
 
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 7px;
     text-decoration: none;
-    color: var(--text-secondary);
+    color: #9080a8;
     font-weight: 600;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    font-size: 0.92rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
     position: relative;
 }
 
 .nav-link:hover {
-    color: var(--text-color);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.nav-link:active {
-    transform: scale(0.98);
+    color: #e8e0f0;
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-link.active {
-    color: var(--accent-color);
+    color: #e8e0f0;
 }
 
-.nav-icon {
-    font-size: 0.9rem;
+/* active underline indicator */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #7b2dff, #c026d3);
 }
 
-/* Efeito especial para o botão de favoritos */
-.nav-links .nav-link:last-child {
-    background: rgba(247, 37, 133, 0.1);
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
+/* ── Heart / Favoritos button ── */
+.nav-link-heart {
+    background: rgba(255, 45, 106, 0.08);
+    border: 1px solid rgba(255, 45, 106, 0.2);
+    color: #d06080;
 }
 
-.nav-links .nav-link:last-child:hover {
-    background: rgba(247, 37, 133, 0.2);
+.nav-link-heart:hover {
+    background: rgba(255, 45, 106, 0.16);
+    border-color: rgba(255, 45, 106, 0.4);
+    color: #ff6b8a;
 }
 
-/* Responsividade */
+.nav-link-heart.active {
+    background: rgba(255, 45, 106, 0.18);
+    border-color: rgba(255, 45, 106, 0.45);
+    color: #ff6b8a;
+}
+
+.nav-link-heart.active::after {
+    display: none;
+}
+
+.nav-icon { font-size: 0.85rem; }
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
-    .header-content {
-        height: 60px;
-        padding: 0 1rem;
-    }
-    
-    .logo {
-        font-size: 1.5rem;
-    }
-    
-    .logo-icon {
-        font-size: 1.2rem;
-    }
-    
-    .nav-links {
-        gap: 0.8rem;
-    }
-    
-    .nav-link {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-    }
+    .header-container { padding: 0 1.2rem; }
+
+    .header-content { height: 60px; }
+
+    .logo { font-size: 1.45rem; }
+
+    .logo-icon { font-size: 1.2rem; }
+
+    .nav-link { font-size: 0.85rem; padding: 7px 12px; }
 }
 
 @media (max-width: 480px) {
-    .logo span {
-        display: none;
-    }
-    
-    .nav-link span {
-        display: none;
-    }
-    
-    .nav-link {
-        padding: 0.6rem;
-    }
-    
-    .nav-icon {
-        font-size: 1.1rem;
-        margin: 0;
-    }
+    .logo-flix { display: none; }
+
+    .nav-link span { display: none; }
+
+    .nav-link { padding: 8px 10px; }
+
+    .nav-icon { font-size: 1rem; margin: 0; }
 }

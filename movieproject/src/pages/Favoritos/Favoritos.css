@@ -1,123 +1,311 @@
-/* Estilos gerais */
-.container-salvos {
+/* ── Container ── */
+.favoritos-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    color: white;
-  }
-  
-  .titulo-salvos {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    padding: 40px 24px 60px;
+    color: #e8e0f0;
+}
+
+/* ── Header ── */
+.favoritos-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 16px;
+}
+
+.favoritos-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #7b2dff, #3a0ca3);
+    border-radius: 2px;
+}
+
+.favoritos-icon {
+    color: #ff2d6a;
+    font-size: 1.6rem;
+    filter: drop-shadow(0 0 8px rgba(255, 45, 106, 0.5));
+}
+
+.favoritos-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+}
+
+.favoritos-count {
+    margin-left: 4px;
+    background: rgba(123, 45, 255, 0.2);
+    border: 1px solid rgba(123, 45, 255, 0.35);
+    color: #c4a8ff;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+/* ── Empty state ── */
+.sem-filmes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
     text-align: center;
-    color: rgb(238, 231, 231);
-  }
-  
-  .sem-filmes {
-    text-align: center;
-    padding: 50px;
-    font-size: 1.2rem;
-  }
-  
-  .link-home {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #3f51b5;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .link-home:hover {
-    background-color: #303f9f;
-  }
-  
-  /* Lista de filmes salvos */
-  .lista-filmes-salvos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
-  }
-  
-  .card-filme-salvo {
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
-  }
-  
-  .card-filme-salvo:hover {
-    transform: translateY(-5px);
-  }
-  
-  .poster-salvo {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-  }
-  
-  .info-filme-salvo {
-    padding: 15px;
-  }
-  
-  .info-filme-salvo h2 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-  }
-  
-  .nota-salvo, .ano-salvo {
-    color: #ccc;
+    gap: 12px;
+}
+
+.sem-filmes-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(255, 45, 106, 0.1);
+    border: 2px solid rgba(255, 45, 106, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 8px;
-  }
-  
-  /* Botões */
-  .botoes-filme-salvo {
+}
+
+.sem-filmes-icon svg {
+    font-size: 2.2rem;
+    color: rgba(255, 45, 106, 0.5);
+}
+
+.sem-filmes h2 {
+    font-size: 1.4rem;
+    color: #e8e0f0;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sem-filmes p {
+    color: #7a6a90;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.link-home {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #3a0ca3, #7b2dff);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(123, 45, 255, 0.35);
+}
+
+.link-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 35px rgba(123, 45, 255, 0.5);
+}
+
+/* ── Grid ── */
+.lista-filmes-salvos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+}
+
+/* ── Card ── */
+.card-salvo {
+    background: #12102a;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-salvo:hover {
+    transform: translateY(-8px);
+    border-color: rgba(123, 45, 255, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(123, 45, 255, 0.15);
+}
+
+/* ── Poster ── */
+.card-poster-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    overflow: hidden;
+    background: #0d0d1a;
+}
+
+.card-poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-salvo:hover .card-poster {
+    transform: scale(1.04);
+}
+
+.card-poster-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #140f28, #1e1640);
+    color: #2a1f50;
+    font-size: 3rem;
+}
+
+.card-rating-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    color: #ffd700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.82rem;
+}
+
+.card-rating-badge svg {
+    font-size: 0.72rem;
+}
+
+/* ── Info ── */
+.card-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 8px;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f0e8ff;
+    margin: 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-meta {
     display: flex;
     gap: 10px;
-    margin-top: 15px;
-  }
-  
-  .botao-ver-mais, .botao-remover {
-    padding: 8px 15px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+}
+
+.card-year {
+    color: #7a6a90;
+    font-size: 0.82rem;
+}
+
+/* ── Genre tags ── */
+.card-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 2px;
+}
+
+.card-genre-tag {
+    background: rgba(123, 45, 255, 0.15);
+    border: 1px solid rgba(123, 45, 255, 0.28);
+    color: #a080d8;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+/* ── Buttons ── */
+.card-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.btn-detalhes {
     flex: 1;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 14px;
+    background: linear-gradient(135deg, #3a0ca3, #7b2dff);
+    color: #fff;
     text-decoration: none;
-  }
-  
-  .botao-ver-mais {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .botao-ver-mais:hover {
-    background-color: #45a049;
-  }
-  
-  .botao-remover {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .botao-remover:hover {
-    background-color: #d32f2f;
-  }
-  
-  /* Responsivo */
-  @media (max-width: 768px) {
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    transition: all 0.3s;
+}
+
+.btn-detalhes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(123, 45, 255, 0.45);
+}
+
+.btn-remover {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 14px;
+    background: rgba(220, 20, 60, 0.12);
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    color: #ff6b8a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.btn-remover:hover {
+    background: rgba(220, 20, 60, 0.28);
+    border-color: #ff2d55;
+    color: #ff2d55;
+    transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
     .lista-filmes-salvos {
-      grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 18px;
     }
-    
-    .poster-salvo {
-      height: auto;
+
+    .favoritos-header h1 { font-size: 1.6rem; }
+    .favoritos-icon      { font-size: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+    .favoritos-container { padding: 24px 16px 40px; }
+
+    .lista-filmes-salvos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
     }
-  }
+}
